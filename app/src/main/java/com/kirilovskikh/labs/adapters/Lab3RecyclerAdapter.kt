@@ -1,4 +1,4 @@
-package com.kirilovskikh.labs
+package com.kirilovskikh.labs.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.kirilovskikh.labs.R
+import com.kirilovskikh.labs.data.SimpleListModel
 import org.jetbrains.anko.onClick
 
 /**

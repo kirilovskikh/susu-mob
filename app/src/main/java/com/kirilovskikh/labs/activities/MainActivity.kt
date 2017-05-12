@@ -1,6 +1,7 @@
-package com.kirilovskikh.labs
+package com.kirilovskikh.labs.activities
 
 import butterknife.OnClick
+import com.kirilovskikh.labs.R
 
 class MainActivity : BaseActivity() {
 

@@ -1,9 +1,12 @@
-package com.kirilovskikh.labs
+package com.kirilovskikh.labs.activities
 
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import butterknife.BindView
+import com.kirilovskikh.labs.R
+import com.kirilovskikh.labs.adapters.Lab3RecyclerAdapter
+import com.kirilovskikh.labs.data.SimpleListModel
 import org.jetbrains.anko.intentFor
 
 /**

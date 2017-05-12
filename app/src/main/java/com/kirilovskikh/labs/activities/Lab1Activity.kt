@@ -1,12 +1,10 @@
-package com.kirilovskikh.labs
+package com.kirilovskikh.labs.activities
 
 import android.content.Context
-import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import butterknife.BindView
-import butterknife.OnClick
+import com.kirilovskikh.labs.R
 import org.jetbrains.anko.intentFor
 
 /**
@@ -35,18 +33,18 @@ class Lab1Activity : BaseActivity() {
         }
     }
 
-    override fun onSaveInstanceState(bundle: Bundle?) {
+    override fun onSaveInstanceState(bundle: android.os.Bundle?) {
         super.onSaveInstanceState(bundle)
 
         if (bundle != null) {
-            bundle.putString(EXTRA_TEXT_VALUE, textView.text.toString())
-            bundle.putString(EXTRA_EDIT_VALUE, editText.text.toString())
+            bundle.putString(Lab1Activity.EXTRA_TEXT_VALUE, textView.text.toString())
+            bundle.putString(Lab1Activity.EXTRA_EDIT_VALUE, editText.text.toString())
         }
     }
 
-    @OnClick(R.id.applyButton)
+    @butterknife.OnClick(R.id.applyButton)
     fun onApplyButtonClick() {
-        Log.d("kirilovskikh", editText.text.toString())
+        android.util.Log.d("kirilovskikh", editText.text.toString())
         textView.text = editText.text
     }
 

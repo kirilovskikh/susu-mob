@@ -1,8 +1,10 @@
-package com.kirilovskikh.labs
+package com.kirilovskikh.labs.activities
 
 import android.content.Context
 import android.widget.TextView
 import butterknife.BindView
+import com.kirilovskikh.labs.R
+import com.kirilovskikh.labs.data.SimpleListModel
 import org.jetbrains.anko.intentFor
 
 /**

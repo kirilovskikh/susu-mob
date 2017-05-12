@@ -1,4 +1,4 @@
-package com.kirilovskikh.labs
+package com.kirilovskikh.labs.data
 
 import java.io.Serializable
 
