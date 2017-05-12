@@ -19,7 +19,7 @@
             android:id="@+id/lab3Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LAB 3, 4" />
+            android:text="LAB 3" />
 
     </LinearLayout>
 
