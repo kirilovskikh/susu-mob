@@ -18,24 +18,44 @@ import com.kirilovskikh.labs.data.NewsModel
  */
 class Lab4RecyclerAdapter(private val context: Context,
                           private val imageLoader: ImageLoader,
-                          private val items: MutableList<NewsModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+                          val loadModeListener: (lastModel: NewsModel?) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    var canLoadMore: Boolean = true
+    private val items: MutableList<NewsModel> = mutableListOf()
 
     private val TYPE_NEWS = 0
     private val TYPE_ADVERTISING = 1
+    private val TYPE_PROGRESS = 2
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = items.size + if (canLoadMore) 1 else 0
 
-    override fun getItemViewType(position: Int): Int = if (items[position].isAdvertising) TYPE_ADVERTISING else TYPE_NEWS
+    override fun getItemViewType(position: Int): Int {
+        return if (items.size <= position)
+            TYPE_PROGRESS
+        else if (items[position].isAdvertising)
+            TYPE_ADVERTISING
+        else
+            TYPE_NEWS
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+        fun createView(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, parent, false)
+
         return when (viewType) {
-            TYPE_NEWS -> NewsViewHolder(LayoutInflater.from(context).inflate(R.layout.lab_4_news_recycler_item, parent, false))
-            TYPE_ADVERTISING -> AdvertisingViewHolder(LayoutInflater.from(context).inflate(R.layout.lab_4_advertising_recycler_item, parent, false))
-            else -> NewsViewHolder(LayoutInflater.from(context).inflate(R.layout.lab_4_news_recycler_item, parent, false))
+            TYPE_NEWS -> NewsViewHolder(createView(R.layout.lab_4_news_recycler_item))
+            TYPE_ADVERTISING -> AdvertisingViewHolder(createView(R.layout.lab_4_advertising_recycler_item))
+            TYPE_PROGRESS -> ProgressViewHolder(createView(R.layout.progress_recycler_item))
+            else -> NewsViewHolder(createView(R.layout.lab_4_news_recycler_item))
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+        if (holder is ProgressViewHolder) {
+            loadModeListener.invoke(items.lastOrNull())
+            return
+        }
+
+
         val item = items[position]
         if (holder is NewsViewHolder) {
 
@@ -58,7 +78,6 @@ class Lab4RecyclerAdapter(private val context: Context,
     }
 
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         @BindView(R.id.newsImage) lateinit var newsImage: ImageView
         @BindView(R.id.textView) lateinit var textView: TextView
 
@@ -68,12 +87,13 @@ class Lab4RecyclerAdapter(private val context: Context,
     }
 
     class AdvertisingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         @BindView(R.id.imageView) lateinit var imageView: ImageView
 
         init {
             ButterKnife.bind(this, itemView)
         }
     }
+
+    class ProgressViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
 
 }

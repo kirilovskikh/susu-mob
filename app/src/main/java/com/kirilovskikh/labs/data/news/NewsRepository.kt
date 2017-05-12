@@ -10,9 +10,11 @@ class NewsRepository {
 
     fun fetch(lastModel: NewsModel?): Observable<List<NewsModel>> {
         return Observable.create<List<NewsModel>> { subscriber ->
+            Thread.sleep(2000)
+
             val items = mutableListOf<NewsModel>()
 
-            val startId = lastModel?.id ?: 1
+            val startId = (lastModel?.id?.plus(1)) ?: 1
             val endId = startId + 20
 
             for (i in startId..endId) {
