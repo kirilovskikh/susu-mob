@@ -15,7 +15,7 @@ class MainActivity : BaseActivity() {
 
     @OnClick(R.id.lab1Button)
     fun onLab1Click() {
-
+        startActivity(Lab1Activity.newIntent(this))
     }
 
 }
