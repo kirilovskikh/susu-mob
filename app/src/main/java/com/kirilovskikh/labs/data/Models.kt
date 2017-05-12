@@ -10,5 +10,6 @@ data class SimpleListModel(val id: Long,
                            val text: String) : Serializable
 
 data class NewsModel(val id: Long,
-                     val image: String? = null,
-                     val text: String? = null)
+                     var image: String? = null,
+                     val text: String? = null,
+                     var isAdvertising: Boolean = false)

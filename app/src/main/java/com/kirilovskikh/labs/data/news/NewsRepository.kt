@@ -18,9 +18,14 @@ class NewsRepository {
             for (i in startId..endId) {
 
                 val model = if (i % 4 == 0L) {
-                    NewsModel(i, image = "https://hi-news.ru/wp-content/uploads/2017/01/asteroid-650x387.jpg")
+                    NewsModel(i, image = "https://hi-news.ru/wp-content/uploads/2017/01/asteroid-650x387.jpg", text = "$i $i $i $i")
                 } else {
                     NewsModel(i, text = "$i $i $i $i")
+                }
+
+                if (i % 10 == 0L) {
+                    model.isAdvertising = true
+                    model.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/290px-FullMoon2010.jpg"
                 }
 
                 items.add(model)
