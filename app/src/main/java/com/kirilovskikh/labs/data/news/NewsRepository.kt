@@ -14,26 +14,31 @@ class NewsRepository {
 
             val items = mutableListOf<NewsModel>()
 
-            val startId = (lastModel?.id?.plus(1)) ?: 1
-            val endId = startId + 20
+            if (lastModel != null && lastModel.id > 50) {
 
-            for (i in startId..endId) {
+            } else {
+                val startId = (lastModel?.id?.plus(1)) ?: 1
+                val endId = startId + 20
 
-                val model = if (i % 4 == 0L) {
-                    NewsModel(i, image = "https://hi-news.ru/wp-content/uploads/2017/01/asteroid-650x387.jpg", text = "$i $i $i $i")
-                } else {
-                    NewsModel(i, text = "$i $i $i $i")
+                for (i in startId..endId) {
+
+                    val model = if (i % 4 == 0L) {
+                        NewsModel(i, image = "https://hi-news.ru/wp-content/uploads/2017/01/asteroid-650x387.jpg", text = "$i $i $i $i")
+                    } else {
+                        NewsModel(i, text = "$i $i $i $i")
+                    }
+
+                    if (i % 10 == 0L) {
+                        model.isAdvertising = true
+                        model.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/290px-FullMoon2010.jpg"
+                    }
+
+                    items.add(model)
                 }
-
-                if (i % 10 == 0L) {
-                    model.isAdvertising = true
-                    model.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/290px-FullMoon2010.jpg"
-                }
-
-                items.add(model)
             }
 
             subscriber.onNext(items)
+            subscriber.onCompleted()
         }
 
     }

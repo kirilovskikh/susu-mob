@@ -22,6 +22,7 @@ class Lab4RecyclerAdapter(private val context: Context,
 
     var canLoadMore: Boolean = true
     private val items: MutableList<NewsModel> = mutableListOf()
+    private var isLoading = true
 
     private val TYPE_NEWS = 0
     private val TYPE_ADVERTISING = 1
@@ -69,11 +70,13 @@ class Lab4RecyclerAdapter(private val context: Context,
             holder.textView.text = item.text
 
         } else if (holder is AdvertisingViewHolder) {
+            isLoading = true
             imageLoader.load(holder.imageView, item.image)
         }
     }
 
     fun addItems(list: List<NewsModel>) {
+        isLoading = false
         items.addAll(list)
     }
 

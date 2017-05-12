@@ -47,8 +47,13 @@ class Lab4Activity : BaseActivity() {
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
-                            adapter.addItems(it)
-                            adapter.notifyDataSetChanged()
+                            if (it.isEmpty()) {
+                                adapter.canLoadMore = false
+                                adapter.notifyDataSetChanged()
+                            } else {
+                                adapter.addItems(it)
+                                adapter.notifyDataSetChanged()
+                            }
                         }, { it.printStackTrace() }))
     }
 
