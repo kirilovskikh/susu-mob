@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/task1Button"
+            android:id="@+id/lab1Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LAB1" />
