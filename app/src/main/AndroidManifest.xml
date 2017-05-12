@@ -21,9 +21,18 @@
         </activity>
 
         <activity android:name=".activities.Lab1Activity" />
-        <activity android:name=".activities.Lab3Activity" />
-        <activity android:name=".activities.Lab3DetailActivity" />
-        <activity android:name=".activities.Lab4Activity" />
+
+        <activity
+            android:name=".activities.Lab3Activity"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name=".activities.Lab3DetailActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name=".activities.Lab4Activity"
+            android:configChanges="orientation|screenSize" />
 
     </application>
 

@@ -32,6 +32,7 @@ class Lab4Activity : BaseActivity() {
     override fun getLayoutId(): Int = R.layout.lab_4_activity
 
     override fun onCreate() {
+        setBackButton()
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }

@@ -27,6 +27,8 @@ class Lab3Activity : BaseActivity() {
     override fun getLayoutId(): Int = R.layout.lab_3_activity
 
     override fun onCreate() {
+        setBackButton()
+
         val adapter = Lab3RecyclerAdapter(this, items, onItemClick = { onItemClick(it) })
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter

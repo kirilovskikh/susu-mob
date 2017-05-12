@@ -25,6 +25,8 @@ class Lab1Activity : BaseActivity() {
     override fun getLayoutId(): Int = R.layout.lab_1_activity
 
     override fun onCreate() {
+        setBackButton()
+
         if (savedInstanceState != null) {
             textView.text = savedInstanceState?.getString(EXTRA_TEXT_VALUE)
             val editTextValue = savedInstanceState?.getString(EXTRA_EDIT_VALUE)

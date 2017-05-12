@@ -25,6 +25,8 @@ class Lab3DetailActivity : BaseActivity() {
     override fun getLayoutId(): Int = R.layout.lab_3_detail_activity
 
     override fun onCreate() {
+        setBackButton()
+
         val model: SimpleListModel = intent.getSerializableExtra(EXTRA_MODEL) as SimpleListModel
         textView.text = model.text
     }
