@@ -13,6 +13,8 @@ class Lab3Activity : BaseActivity() {
 
     @BindView(R.id.recyclerView) lateinit var recyclerView: RecyclerView
 
+    private val items = generateItems()
+
     companion object {
 
         fun newIntent(context: Context) = context.intentFor<Lab3Activity>()
@@ -22,11 +24,15 @@ class Lab3Activity : BaseActivity() {
     override fun getLayoutId(): Int = R.layout.lab_3_activity
 
     override fun onCreate() {
-        val adapter = Lab3RecyclerAdapter(this, generateItems())
+        val adapter = Lab3RecyclerAdapter(this, items, onItemClick = { onItemClick(it) })
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
 
-    private fun generateItems(): List<SimpleListModel> = (0..200).map { SimpleListModel(it.toLong(), it.toString()) }
+    private fun onItemClick(position: Int) {
+        startActivity(Lab3DetailActivity.newIntent(this, items[position]))
+    }
+
+    private fun generateItems(): List<SimpleListModel> = (0..200).map { SimpleListModel(it.toLong(), "$it $it $it") }
 
 }

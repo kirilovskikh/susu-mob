@@ -20,6 +20,7 @@
 
         <activity android:name=".Lab1Activity" />
         <activity android:name=".Lab3Activity" />
+        <activity android:name=".Lab3DetailActivity" />
 
     </application>
 
