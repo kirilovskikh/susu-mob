@@ -21,6 +21,12 @@
             android:layout_height="wrap_content"
             android:text="LAB 3" />
 
+        <Button
+            android:id="@+id/lab4Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LAB 4" />
+
     </LinearLayout>
 
 </FrameLayout>

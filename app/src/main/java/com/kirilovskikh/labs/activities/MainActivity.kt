@@ -20,4 +20,9 @@ class MainActivity : BaseActivity() {
         startActivity(Lab3Activity.newIntent(this))
     }
 
+    @OnClick(R.id.lab4Button)
+    fun onLab4Click() {
+        startActivity(Lab4Activity.newIntent(this))
+    }
+
 }
